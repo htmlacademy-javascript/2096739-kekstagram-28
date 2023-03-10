@@ -1,41 +1,24 @@
-//функция проверки длины строки (менее 20 символов)
-function lenghtString (lengthTestString) {
-  if (lengthTestString.length <= 20) {
-    return true;
-  }
+//функция проверки длины строки
+//функция исправлена у переменных изменены имена
+const measureLenght = (str, maxLenght) => (str.length <= maxLenght);
 
-  return false;
-}
-
-lenghtString('это строка меньше 20')
+measureLenght('это строка', 15);
 
 //функция проверки, является ли строка палиндромом
-function isPalindrome (str) {
-  if (str.toLowerCase().replace(/ /g,'').split('').reverse().join('') === str.toLowerCase().replace(/ /g,'')) {
-    return true;
-  }
-  return false;
-}
+// сократил функцию, убрав if else
+const isPalindrome = (str) => (str.toLowerCase().replace(/ /g,'').split('').reverse().join('') === str.toLowerCase().replace(/ /g,''));
 
-isPalindrome ('топот');
+isPalindrome ('Топот');
 isPalindrome ('ДовОд');
 isPalindrome ('Кекс');
 isPalindrome ('Лёша на полке клопа нашёл ');
 
 //функция извлекающая числа в виде целого положительного числа
-function outputNumber (test) {
-  return test.toString().replace(/[^0-9]/g,'');
-}
+const outputNumber = (test) => test.toString().replace(/[^0-9]/g,'');
 
 outputNumber('1 кефир, 0.5 батона');
 
 //функция добавления символов в начало строки
-function outputNumber (str, minLenght, addSymbol) {
-  if ((addSymbol.length + addSymbol.length) >= minLenght)
-   return (addSymbol.slice(0, minLenght - str.length) + str);
-  //не понимаю как сделать данную задачу без .padStart при условии,
-  //что длина исходной строки и добивки меньше заданного кол-ва символов
-   return (str.padStart(minLenght, addSymbol))
-  }
-
-outputNumber('1', 4, '0')
+//заменил padStart(), добавив в функцию метод repeat()
+const addingSymbols = (str, minLenght, addSymbol) => (addSymbol.repeat(minLenght).slice(0, minLenght - str.length) + str);
+addingSymbols('q', 4, 'we');
